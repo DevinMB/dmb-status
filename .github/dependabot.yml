@@ -16,6 +16,11 @@ updates:
     groups:
       updates:
         update-types: [minor, patch]
+    ignore:
+      # nginx odd minors are the mainline branch; this repo tracks stable (even).
+      # Patches still flow; the next stable minor is a deliberate bump.
+      - dependency-name: nginx
+        update-types: [version-update:semver-minor]
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: weekly, day: monday }
