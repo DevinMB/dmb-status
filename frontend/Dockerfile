@@ -5,7 +5,8 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:1.30.5-alpine
+# 1.30.6 fixes three HIGH nginx CVEs in 1.30.5; taken before the usual two-week wait.
+FROM nginx:1.30.6-alpine
 # Alpine security fixes land between base image releases; CI's Trivy gate
 # fails on fixable HIGH and CRITICAL findings.
 RUN apk upgrade --no-cache
