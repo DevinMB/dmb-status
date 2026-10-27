@@ -79,10 +79,12 @@ export default function MetricChart({ metricKey }) {
             stroke="#242A35"
           />
           <YAxis
-            domain={[minVal - pad, maxVal + pad]}
+            domain={[minVal >= 0 ? Math.max(0, Math.floor(minVal - pad)) : Math.floor(minVal - pad), Math.ceil(maxVal + pad)]}
             tick={{ fontSize: 9, fontFamily: 'ui-monospace, monospace', fill: '#5B6472' }}
             stroke="#242A35"
             tickCount={4}
+            allowDecimals={false}
+            tickFormatter={(v) => Math.round(v).toLocaleString('en-US')}
           />
           <Tooltip
             labelFormatter={fmtTooltip}
