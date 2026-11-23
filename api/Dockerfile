@@ -1,4 +1,4 @@
-FROM node:26.12.1-alpine
+FROM node:26.13.0-alpine
 
 # Alpine security fixes land between base image releases; CI's Trivy gate
 # fails on fixable HIGH and CRITICAL findings.
